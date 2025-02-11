@@ -9,7 +9,7 @@
 }
 .text-revel {
   background-repeat: no-repeat;
-  background-color: rgb(0, 0, 0)/50;
+  background-color: rgb(0, 0, 0) / 50;
   background-image: linear-gradient(white, white);
 
   background-clip: text;
@@ -88,4 +88,30 @@ input[type="range"]::-webkit-slider-thumb {
   width: 50px;
   margin-top: -10px;
   height: 50px;
+}
+.photo {
+  mask: url(./assets/blob-haikei.svg) center / contain no-repeat;
+}
+.blobAnimation {
+  animation: blobAnimation 5s ease-in-out infinite alternate;
+}
+@keyframes blobAnimation {
+  0% {
+    border-radius: 30% 58% 60% 39% / 43% 35% 55% 57%;
+  }
+  20% {
+    border-radius: 40% 50% 70% 30% / 50% 40% 60% 50%;
+  }
+  40% {
+    border-radius: 50% 40% 60% 50% / 45% 55% 50% 55%;
+  }
+  60% {
+    border-radius: 35% 55% 65% 45% / 55% 50% 45% 60%;
+  }
+  80% {
+    border-radius: 45% 60% 50% 40% / 50% 60% 55% 45%;
+  }
+  100% {
+    border-radius: 30% 58% 60% 39% / 43;
+  }
 }
