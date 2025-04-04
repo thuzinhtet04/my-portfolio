@@ -24,7 +24,7 @@ const songs: {
 const AudioPlayer = () => {
   const [audioIndex, setAudioIndex] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [currentTime, setCurrentTime] = useState<number>(0);
+    const [currentTime, setCurrentTime] = useState<number>(0);
   const [duration, setDuration] = useState<number>(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const setAudioData = () => setDuration(audioRef?.current!.duration);
@@ -36,6 +36,7 @@ const AudioPlayer = () => {
   };
 
   useEffect(() => {
+    if (!audioRef) return;
     audioRef.current!.addEventListener("loadedmetadata", setAudioData);
     const updateTime = () => {
       setCurrentTime(audioRef?.current!.currentTime);
@@ -46,8 +47,8 @@ const AudioPlayer = () => {
     }
 
     return () => {
-      audioRef.current!.removeEventListener("timeupdate", updateTime);
-      audioRef.current!.removeEventListener("loadedmetadata", setAudioData);
+      audioRef.current!?.removeEventListener("timeupdate", updateTime);
+      audioRef.current!?.removeEventListener("loadedmetadata", setAudioData);
     };
   }, [audioIndex]);
 
@@ -103,7 +104,7 @@ const AudioPlayer = () => {
           ref={audioRef}
           src={songs[audioIndex].audio}
           hidden
-          controls
+          
         ></audio>
         <div className="flex gap-1 p-1 text-sm text-white/80">
           <h3>{songs[audioIndex].name}</h3>
@@ -119,7 +120,7 @@ const AudioPlayer = () => {
           onChange={(e) => {
             seek(e);
           }}
-        />
+              />
         <div className="flex gap-5 p-0.5 text-white/70">
           <button
             onClick={() => {
@@ -132,7 +133,7 @@ const AudioPlayer = () => {
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
-              stroke="currentColor"
+                stroke="currentColor"
               className="size-4 "
             >
               <path

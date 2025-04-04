@@ -115,3 +115,6 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 30% 58% 60% 39% / 43;
   }
 }
+img{
+  -webkit-user-drag: none;
+}

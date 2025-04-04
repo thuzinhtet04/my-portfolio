@@ -1,16 +1,14 @@
 import useEmblaCarousel from "embla-carousel-react";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import p1 from "../assets/profile1.jpg";
 import p2 from "../assets/profile2.jpg";
 import Autoplay from "embla-carousel-autoplay";
-import Lightbox from "yet-another-react-lightbox";
-import { useScroll } from "motion/react";
 
 const Profile = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [index, setIndex] = useState<number>(0);
   const [emblaRef] = useEmblaCarousel({ loop: true }, [
-    // Autoplay({ delay: 4000 }),
+    Autoplay({ delay: 3000 }),
   ]);
   const images = [
     {
